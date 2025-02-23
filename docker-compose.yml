@@ -5,14 +5,14 @@ services:
     ports:
       - "8083:8083"
     environment:
+      # RabbitMQ Configuración
       SPRING_RABBITMQ_HOST: "50.17.240.116"
       SPRING_RABBITMQ_PORT: "5672"
       SPRING_RABBITMQ_USERNAME: "admin"
       SPRING_RABBITMQ_PASSWORD: "usuarioec2"
       RABBITMQ_EXCHANGE_ALERTAS: "alertas_medicas_exchange"
-      SPRING_RABBITMQ_QUEUE: "registros_historicos_queue"
       RABBITMQ_ROUTINGKEY_ALERTAS: "registros_historicos_key"
-    restart: always
+      SPRING_RABBITMQ_QUEUE: "registros_historicos_queue"
     networks:
       - kafka_kafka-net 
 

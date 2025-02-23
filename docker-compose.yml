@@ -1,6 +1,6 @@
 services:
   registros-historicos-productor:
-    image: manvg/ms-registros-historicos-productor
+    image: ms-registros-historicos-productor
     container_name: registros-historicos-productor
     ports:
       - "8083:8083"
@@ -10,12 +10,12 @@ services:
       SPRING_RABBITMQ_USERNAME: "admin"
       SPRING_RABBITMQ_PASSWORD: "usuarioec2"
       RABBITMQ_EXCHANGE_ALERTAS: "alertas_medicas_exchange"
-      RABBITMQ_ROUTINGKEY_ALERTAS: "registros_historicos_key"
       SPRING_RABBITMQ_QUEUE: "registros_historicos_queue"
+      RABBITMQ_ROUTINGKEY_ALERTAS: "registros_historicos_key"
     restart: always
     networks:
-      - external_network
+      - kafka_kafka-net 
 
 networks:
-  external_network:
-    driver: bridge
+  kafka_kafka-net:
+    external: true
